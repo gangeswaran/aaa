@@ -192,8 +192,8 @@ const Attendance = () => {
       }
     } catch (error) {
       console.error("Error:--", error);
-      setStatus(error?.response?.data?.error);
-      setMessage(error?.response?.data?.error || "Unknown error occurred.");
+      setStatus(error?.response?.data?.message);
+      setMessage(error?.response?.data?.message || "Unknown error occurred.");
     } finally {
       setLoading(false);
     }
@@ -204,8 +204,8 @@ const Attendance = () => {
     const distance = calculateDistance(
       latitude,
       longitude,
-      COLLEGE_CENTER.lat,
-      COLLEGE_CENTER.lng
+      collegeCenter.lat,
+      collegeCenter.lng
     );
     try {
       const response = await axios.post(
@@ -289,7 +289,7 @@ const Attendance = () => {
         </button>
       )}
 
-      <p className="mt-2 text-sm text-gray-600 animate-fadeIn">{status}</p>
+      <p className="mt-2 text-lg text-gray-600 animate-fadeIn">{status}</p>
     </div>
   );
 };
