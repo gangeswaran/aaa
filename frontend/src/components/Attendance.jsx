@@ -184,15 +184,15 @@ const Attendance = () => {
       );
       setAttendance(response.data.message);
       console.log(response.data);
-      if (response.data.success) {
+      if (response.data.success) {  
         setStatus(response.data.message);
         setMarkedAttendance(true);
       } else {
-        setStatus(response.data.message);
+        setStatus(response);
       }
     } catch (error) {
       console.error("Error:--", error);
-      setStatus("❌ Error in attendance process.");
+      setStatus(error?.response?.data?.error);
       setMessage(error?.response?.data?.error || "Unknown error occurred.");
     } finally {
       setLoading(false);
